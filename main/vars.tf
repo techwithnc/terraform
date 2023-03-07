@@ -1,0 +1,13 @@
+variable "AMI_ID" {}
+variable "TYPE" {}
+variable "A_ZONE" {}
+variable "PRI_IP" {}
+variable "VPC_CIDR" {}
+variable "TENANCY" {}
+variable "SUBNET_CIDR" {}
+variable "IGS_P1" {}
+variable "IGS_P2" {}
+variable "IGS_P3" {}
+variable "IGS_P4" {}
+variable "PTC" {}
+variable "REGION" {}

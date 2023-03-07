@@ -1,0 +1,4 @@
+main/.terraform/
+main/.terraform.lock.hcl
+test/.terraform/
+test/.terraform.lock.hcl
