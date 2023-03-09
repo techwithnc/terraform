@@ -36,3 +36,12 @@ module "networking_module" {
 module "storage_module"{
   source = "../modules/storage"
 }
+module "loadbalancer_module"{
+  source = "../modules/loadbalancer"
+  SCR_GP = "${module.networking_module.sg_id}"
+  SUBNET_ID = "${module.networking_module.subnet_id}"
+  SUBNET_ID_2 = "${module.networking_module.subnet_id_2}"
+  VPC_ID = "${module.networking_module.vpc_id}"
+  INST_ID = "${module.instance_module.inst_id}"
+  INST_ID_2 = "${module.instance_module.inst_id_2}"
+}
