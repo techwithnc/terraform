@@ -1,17 +1,12 @@
 variable "AMI_ID" {}
 variable "TYPE" {}
-variable "A_ZONE" {}
-variable "A_ZONE_2" {}
-variable "PRI_IP" {}
-variable "PRI_IP_2" {}
-variable "VPC_CIDR" {}
-variable "TENANCY" {}
-variable "SUBNET_CIDR" {}
-variable "SUBNET_CIDR_2" {}
-variable "IGS_P1" {}
-variable "IGS_P2" {}
-variable "IGS_P3" {}
-variable "IGS_P4" {}
-variable "IGS_P5" {}
-variable "PTC" {}
 variable "REGION" {}
+variable "avail_zones" {
+    type = list(string)
+}
+variable "subnet_cidrs" {
+    type = list(string)
+}
+variable "private_ips" {
+    type = list(string)
+}
