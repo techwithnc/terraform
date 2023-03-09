@@ -1,11 +1,16 @@
 variable "VPC_CIDR" {}
 variable "TENANCY" {}
 variable "SUBNET_CIDR" {}
+variable "SUBNET_CIDR_2" {}
 variable "A_ZONE" {}
+variable "A_ZONE_2" {}
 variable "IGS_P1" {}
 variable "IGS_P2" {}
 variable "IGS_P3" {}
 variable "IGS_P4" {}
+variable "IGS_P5" {}
 variable "PTC" {}
 variable "INST_ID" {}
+variable "INST_ID_2" {}
 variable "PRI_IP" {}
+variable "PRI_IP_2" {}

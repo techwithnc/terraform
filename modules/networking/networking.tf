@@ -15,6 +15,14 @@ resource "aws_subnet" "subnet01" {
     Name = "aws_subnet01"
   }
 }
+resource "aws_subnet" "subnet02" {
+  vpc_id     = aws_vpc.vpc01.id
+  cidr_block = "${var.SUBNET_CIDR_2}"
+  availability_zone = "${var.A_ZONE_2}"
+  tags = {
+    Name = "aws_subnet02"
+  }
+}
 resource "aws_security_group" "sg01" {
   name        = "allow_web-traffic"
   description = "Allow web-traffice inbound traffic"
@@ -31,6 +39,13 @@ resource "aws_security_group" "sg01" {
     description      = "http from world"
     from_port        = "${var.IGS_P2}"
     to_port          = "${var.IGS_P2}"
+    protocol         = "${var.PTC}"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+  ingress {
+    description      = "http from world"
+    from_port        = "${var.IGS_P5}"
+    to_port          = "${var.IGS_P5}"
     protocol         = "${var.PTC}"
     cidr_blocks      = ["0.0.0.0/0"]
   }
@@ -81,9 +96,19 @@ resource "aws_route_table_association" "a" {
   subnet_id      = aws_subnet.subnet01.id
   route_table_id = aws_route_table.rtable01.id
 }
+resource "aws_route_table_association" "b" {
+  subnet_id      = aws_subnet.subnet02.id
+  route_table_id = aws_route_table.rtable01.id
+}
 resource "aws_eip" "eip01" {
   vpc                       = true
   instance = "${var.INST_ID}"
   associate_with_private_ip = "${var.PRI_IP}"
+  depends_on = [aws_internet_gateway.gw01]
+}
+resource "aws_eip" "eip02" {
+  vpc                       = true
+  instance = "${var.INST_ID_2}"
+  associate_with_private_ip = "${var.PRI_IP_2}"
   depends_on = [aws_internet_gateway.gw01]
 }
